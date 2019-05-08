@@ -18,15 +18,13 @@ const StyledTooltip = styled.span`
   padding: 1rem;
   pointer-events: none;
   position: absolute;
-  /* right: -100%; */
   left: ${props => props.align === 'right' && '100%'};
   left: ${props => props.align === 'left' && '0'};
   right: ${props => props.align === 'center' && '-100%'};
   top: 1rem;
   transform: translate(-1rem, 1rem);
   transition: opacity .25s ease-out;
-  /* width: auto; */
-  width: 240px;
+  width: auto;
   z-index: 1;
 
   &::after {
@@ -38,7 +36,6 @@ const StyledTooltip = styled.span`
     left: 50%;
     left: ${props => props.align === 'left' && 'calc(100% - .5rem)'};
     left: ${props => props.align === 'right' && '.5rem'};
-    /* transform: translateX(-50%); */
     transform: translateX(${props => props.align === 'center' && '-50%'});
     transform: translateX(${props => props.align === 'left' && '-100%'});
   }
@@ -74,7 +71,7 @@ const StyledTooltipOpener = styled.span`
 `;
 
 const Tooltip = ({ align, children, showIndicator, text, ...rest }) => (
-  <ThemeProvider theme={{ mode: 'dark' }}>
+  <ThemeProvider theme={{ mode: 'light' }}>
     <StyledTooltipOpener {...rest} showIndicator={showIndicator}>
       {children}
       {showIndicator ? <StyledIndicator showIndicator={showIndicator} /> : null}
