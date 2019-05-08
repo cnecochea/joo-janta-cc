@@ -1,3 +1,5 @@
+import { createGlobalStyle } from 'styled-components'
+
 export const CONTROL_HEIGHT = '2.5rem';
 export const CONTROL_PADDING = '0 1rem';
 export const CONTROL_BORDER_STYLE = 'solid';
@@ -23,4 +25,16 @@ export const MixinVisuallyHidden = `
 
 export const MixinFocusStyles = `
   box-shadow: ${FOCUS_COLOR} 0 0 5px 1px;
+`;
+
+export const GlobalStyles = createGlobalStyle`
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: ${props => props.theme.mode === 'dark' ? '#101527' : '#fff'};
+    color: ${props => props.theme.mode === 'dark' ? '#fff' : "#000"};
+    font-family: sans-serif;
+  }
 `;
