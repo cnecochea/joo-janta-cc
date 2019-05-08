@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components';
+import PropTypes from 'prop-types';
 import { FlexWrapper } from './Elements';
 import * as Styles from '../shared/Styles';
 
@@ -77,8 +78,14 @@ const StyledButtonInner = styled(FlexWrapper)`
   }
 `;
 
-export default ({ as, children, ...rest }) => (
-  <StyledButton {...rest} as={as}>
+const Button = ({ as, children, use, ...rest }) => (
+  <StyledButton {...rest} as={as} use={use}>
     <StyledButtonInner>{children}</StyledButtonInner>
   </StyledButton>
 );
+
+Button.propTypes = {
+  use: PropTypes.oneOf(['default', 'primary']),
+}
+
+export default Button;
