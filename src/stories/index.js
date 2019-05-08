@@ -37,7 +37,7 @@ const Test = ({
 storiesOf('Welcome', module).addWithJSX('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
-  .addWithJSX('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
+  .addWithJSX('standalone', () => <Button onClick={action('clicked')}>Hello Button</Button>)
   .addWithJSX('in a row', () => (
     <>
       <Button>One</Button>
