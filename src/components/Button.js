@@ -6,12 +6,13 @@ import * as Styles from '../shared/Styles';
 
 const StyledButton = styled.button`
   appearance: none;
-  background: rgba(255, 255, 255, 0.15);
+  background: ${props => props.use === 'primary' ? 'green' : 'rgba(255, 255, 255, 0.15)'};
   border: thin solid currentColor;
   border: ${Styles.CONTROL_BORDER_WIDTH} ${Styles.CONTROL_BORDER_STYLE} ${Styles.CONTROL_BORDER_COLOR};
-  color: currentColor;
+  color: ${props => props.use === 'primary' ? '#fff' : 'currentColor'};
   display: inline-block;
   font-size: inherit;
+  font-weight: ${props => props.use === 'primary' && 700};
   line-height: ${Styles.CONTROL_HEIGHT};
   overflow: hidden;
   padding: 0;
