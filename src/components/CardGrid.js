@@ -1,13 +1,35 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
+import Card from './Card';
 
 const StyledCardGrid = styled.div`
+  background-color: #f1f1f1;
   display: grid;
-  outline: 1px dotted red;
-  grid-template-columns: repeat(minmax(1fr, auto), 3);
-  grid-gap: 1rem;
+  height: calc(100vh - ${props => props.gap});
+  grid-template-columns: repeat(auto-fit, minmax(calc(${props => (100 / props.columns)}% - ${props => props.gap}), 1fr) ) ;
+  grid-gap: ${props => props.gap};
+  padding: calc(${props => props.gap} / 2);
 `;
 
-const CardGrid= ({ children }) => <StyledCardGrid>{children}</StyledCardGrid>;
+const CardGrid= ({ children, columns, gap, ...rest }) => (
+  <StyledCardGrid
+    {...rest}
+    columns={columns}
+    gap={gap}
+  >
+    {children}
+  </StyledCardGrid>
+);
+
+CardGrid.propTypes = {
+  columns: PropTypes.number,
+  gap: PropTypes.string,
+}
+
+CardGrid.defaultProps = {
+  columns: 3,
+  gap: '2rem',
+}
 
 export default CardGrid;

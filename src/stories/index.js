@@ -49,7 +49,15 @@ storiesOf('Button', module)
 
 storiesOf('Card', module)
   .addWithJSX('normal usage', () => <Card>Ahoy there</Card>)
-  .addWithJSX('in a grid', () => <CardGrid><Card>Ahoy there</Card><Card>Good day to you</Card></CardGrid>);
+  .addWithJSX('in a grid', () => (
+    <CardGrid>
+      <Card>Ahoy there</Card>
+      <Card>Good day to you</Card>
+      <Card>I said: Good day.</Card>
+      <Card>I said: Good day.</Card>
+      <Card>I said: Good day.</Card>
+    </CardGrid>
+  ));
 
 storiesOf('CheckboxGroup', module)
   .addWithJSX('normal usage', () => (
