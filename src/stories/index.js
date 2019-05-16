@@ -65,6 +65,11 @@ storiesOf('CheckboxGroup', module)
       id="doh"
       legend="Choose all that apply"
       options={['Time', 'Cost', 'Quality']}
+      options={[
+        { text: <>Time <sup>⌛</sup></>, value: 'time' },
+        { text: <>Cost <sup>💰</sup></>, value: 'cost' },
+        { text: 'Quality', value: 'quality' },
+      ]}
     />
   ));
 
@@ -185,6 +190,10 @@ storiesOf('RadioGroup', module)
     <RadioGroup
       id="gah"
       legend="Choose one"
-      options={['Flight', 'Invisibility', 'Telekinesis']}
+      options={[
+        { text: 'Flight', value: 'flight' },
+        { text: 'Invisibility', value: 'invisibility' },
+        { text: <>Telekinesis <s>ooooo</s></>, value: 'telekinesis', tooltip: 'Spooky' },
+      ]}
     />
   ));
