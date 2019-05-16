@@ -73,7 +73,7 @@ LabeledControl.propTypes = {
   required: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   description: PropTypes.string, 
-  Slot: PropTypes.func,
+  Slot: PropTypes.object,
   value: PropTypes.string,
 };
 
@@ -82,7 +82,6 @@ LabeledControl.defaultProps = {
   type: 'text',
   error: false,
 };
-
 
 const ContextualInput = () => {
   return (
