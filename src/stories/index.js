@@ -116,16 +116,16 @@ storiesOf('Elements', module)
     .addWithJSX('Justify between', () => (
       <>
         <FlexWrapper justify="space-between">
-          <span>Start</span>
-          <span>End</span>
+          <span style={{ outline: '1px dotted', height: 50 }}>Start</span>
+          <span style={{ outline: '1px dotted', height: 50 }}>End</span>
         </FlexWrapper>
       </>
     ))
     .addWithJSX('Justify at end', () => (
       <>
         <FlexWrapper justify="flex-end">
-          <span>Start</span>
-          <span>End</span>
+          <span style={{ outline: '1px dotted', height: 50 }}>Start</span>
+          <span style={{ outline: '1px dotted', height: 50 }}>End</span>
         </FlexWrapper>
       </>
     ))
