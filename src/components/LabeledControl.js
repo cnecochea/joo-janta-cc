@@ -73,6 +73,7 @@ LabeledControl.propTypes = {
   required: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   description: PropTypes.string, 
+  Slot: PropTypes.func,
   value: PropTypes.string,
 };
 
@@ -87,16 +88,19 @@ const ContextualInput = () => {
   return (
   // to be clear, this component knows nothing
   <LabeledControlContext.Consumer>
-    {({ id, label, type, value, required, error, description, ...rest }) => (
-      <StyledInput
-        {...rest}
-        type={type}
-        id={id}
-        required={required}
-        data-error={error}
-        aria-describedby={description ? `${id}-desc` : null}
-        value={value}
-      />
+    {({ id, label, type, value, required, error, description, Slot, ...rest }) => (
+      <>
+        <StyledInput
+          {...rest}
+          type={type}
+          id={id}
+          required={required}
+          data-error={error}
+          aria-describedby={description ? `${id}-desc` : null}
+          value={value}
+        />
+        {Slot}
+      </>
     )}
   </LabeledControlContext.Consumer>
 )};
