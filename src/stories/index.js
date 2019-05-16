@@ -1,3 +1,4 @@
+import 'datalist-polyfill';
 import React from 'react';
 
 import { setAddon, storiesOf } from '@storybook/react';
