@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as Styles from '../shared/Styles'
 import PropTypes from 'prop-types';
+import Tooltip from './Tooltip';
 
 const GLYPH_SIZE = '20px';
 const GLYPH_GAP = '1ch';
@@ -66,14 +67,22 @@ const getOptions = (options, name, ToggleControl, type) => {
         <StyledToggleWrapper key={index}>
           <StyledInput
             name={name}
-            id={`${name}-radio-${index}`}
+            id={item.id || `${name}-radio-${index}`}
             type={type}
-            value={item}
+            value={item.value}
           />
           {ToggleControl}
           <StyledLabel htmlFor={`${name}-radio-${index}`}>
-            {item}
+            {item.text}
           </StyledLabel>
+          {
+            item.tooltip
+            ? <Tooltip
+                showIndicator={true}
+                text={item.tooltip}
+              />
+            : null
+          }
         </StyledToggleWrapper>
       ))}
     </React.Fragment>
@@ -96,7 +105,16 @@ class AbstractControlGroup extends React.Component {
 AbstractControlGroup.propTypes = {
   id: PropTypes.string,
   legend: PropTypes.node,
-  options: PropTypes.array,
+  options: 
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        error: PropTypes.bool,
+        text: PropTypes.node,
+        tooltip: PropTypes.node,
+        value: PropTypes.string,
+      })
+    ),
   ToggleControl: PropTypes.func,
   type: PropTypes.oneOf(['radio', 'checkbox']),
 }
