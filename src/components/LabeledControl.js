@@ -35,6 +35,10 @@ const sharedInputStyles = css`
 const StyledInput = styled.input`
   ${sharedInputStyles};
   line-height: ${Styles.CONTROL_HEIGHT};
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
 `;
 
 const StyledTextarea = styled.textarea`
@@ -43,6 +47,21 @@ const StyledTextarea = styled.textarea`
   padding-top: calc(${Styles.CONTROL_HEIGHT} / 3);
 `;
 
+const StyledFieldWrapper = styled.div`
+  display: inline-block;
+  position: relative;
+
+  &::after {
+    color: currentColor;
+    content: '▾';
+    display: ${props => !props.list && 'none'};
+    pointer-events: none;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`;
 
 const LabeledControlContext = React.createContext();
 
@@ -54,7 +73,13 @@ class LabeledControl extends React.Component {
       <LabeledControlContext.Provider value={{ id, label, type, value, required, error, description, ...inputProps }}>
         <StyledLabelFieldPair>
           <StyledLabel htmlFor={id}>{label} {required ? '*' : null}</StyledLabel>
-          { type === 'textarea' ? <ContextualTextarea {...inputProps} /> : <ContextualInput {...inputProps} /> }
+          <StyledFieldWrapper {...inputProps}>
+            {
+              type === 'textarea'
+                ? <ContextualTextarea {...inputProps} />
+                : <ContextualInput {...inputProps} />
+            }
+          </StyledFieldWrapper>
           {
             description 
             ? <StyledSmall id={`${id}-desc`}>{description}</StyledSmall>
