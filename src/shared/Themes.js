@@ -9,4 +9,9 @@ export const themes  = {
     fg: '#fff',
     highlight: 'gold',
   },
+  winter: {
+    bg: 'brown',
+    fg: 'gold',
+    highlight: '#fff',
+  },
 };
