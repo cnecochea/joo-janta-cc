@@ -15,7 +15,7 @@ import DataTable from '../components/DataTable';
 import { FlexWrapper, P, A, Icon, Tr, Th, Td } from '../components/Elements';
 // import Heading from '../components/Heading';
 import LabeledControl from '../components/LabeledControl';
-// import Layout from '../components/Layout';
+import Layout from '../components/Layout';
 import RadioGroup from '../components/RadioGroup';
 import Tooltip from '../components/Tooltip';
 
@@ -179,6 +179,18 @@ storiesOf('Form fields', module)
     />
   ));
 
+storiesOf('Layouts', module)
+  .addWithJSX('Page layout', () => (
+    <Layout
+      asideContent={<div>foo</div>}
+      notificationContent={<div>bar</div>}
+      sideContent={<div>bear</div>}
+      topContent={<div>boar</div>}
+      footerContent={<div>gah</div>}
+    >
+      Ahoy
+    </Layout>
+  ))
 
 storiesOf('RadioGroup', module)
   .addWithJSX('normal usage', () => (
