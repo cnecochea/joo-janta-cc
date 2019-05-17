@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
-import Card from './Card';
 
 const StyledCardGrid = styled.div`
   background-color: #f1f1f1;
