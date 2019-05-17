@@ -10867,6 +10867,11 @@ storybook-addon-styled-component-theme@^1.2.3:
     immutable "^3.8.2"
     recompose "^0.27.1"
 
+storybook-styled-components@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/storybook-styled-components/-/storybook-styled-components-1.1.3.tgz#497a3656ea8245fdf9153de6cd3fb893048559f6"
+  integrity sha512-uKnp+L5FkRxpGMufVclxcV/PGtuZSuxs7jxwG0uRJzPQseXFyZP5hxFq+Jvnm8SvrUEMDiSsETsvEj2A4Jqpdg==
+
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"

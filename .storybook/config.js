@@ -1,6 +1,6 @@
 import { addDecorator, configure, setAddon } from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
-import { withThemesProvider } from 'storybook-addon-styled-component-theme';
+import { withThemes } from 'storybook-styled-components';
 
 setAddon(JSXAddon);
 
