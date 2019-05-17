@@ -35,6 +35,10 @@ const sharedInputStyles = css`
 const StyledInput = styled.input`
   ${sharedInputStyles};
   line-height: ${Styles.CONTROL_HEIGHT};
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
 `;
 
 const StyledTextarea = styled.textarea`
@@ -43,6 +47,21 @@ const StyledTextarea = styled.textarea`
   padding-top: calc(${Styles.CONTROL_HEIGHT} / 3);
 `;
 
+const StyledFieldWrapper = styled.div`
+  display: inline-block;
+  position: relative;
+
+  &::after {
+    color: currentColor;
+    content: '▾';
+    display: ${props => !props.list && 'none'};
+    pointer-events: none;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`;
 
 const LabeledControlContext = React.createContext();
 
@@ -54,7 +73,13 @@ class LabeledControl extends React.Component {
       <LabeledControlContext.Provider value={{ id, label, type, value, required, error, description, ...inputProps }}>
         <StyledLabelFieldPair>
           <StyledLabel htmlFor={id}>{label} {required ? '*' : null}</StyledLabel>
-          { type === 'textarea' ? <ContextualTextarea {...inputProps} /> : <ContextualInput {...inputProps} /> }
+          <StyledFieldWrapper {...inputProps}>
+            {
+              type === 'textarea'
+                ? <ContextualTextarea {...inputProps} />
+                : <ContextualInput {...inputProps} />
+            }
+          </StyledFieldWrapper>
           {
             description 
             ? <StyledSmall id={`${id}-desc`}>{description}</StyledSmall>
@@ -73,6 +98,7 @@ LabeledControl.propTypes = {
   required: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   description: PropTypes.string, 
+  Slot: PropTypes.object,
   value: PropTypes.string,
 };
 
@@ -82,21 +108,23 @@ LabeledControl.defaultProps = {
   error: false,
 };
 
-
 const ContextualInput = () => {
   return (
   // to be clear, this component knows nothing
   <LabeledControlContext.Consumer>
-    {({ id, label, type, value, required, error, description, ...rest }) => (
-      <StyledInput
-        {...rest}
-        type={type}
-        id={id}
-        required={required}
-        data-error={error}
-        aria-describedby={description ? `${id}-desc` : null}
-        value={value}
-      />
+    {({ id, label, type, value, required, error, description, Slot, ...rest }) => (
+      <>
+        <StyledInput
+          {...rest}
+          type={type}
+          id={id}
+          required={required}
+          data-error={error}
+          aria-describedby={description ? `${id}-desc` : null}
+          value={value}
+        />
+        {Slot}
+      </>
     )}
   </LabeledControlContext.Consumer>
 )};

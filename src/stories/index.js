@@ -1,3 +1,4 @@
+import 'datalist-polyfill';
 import React from 'react';
 
 import { setAddon, storiesOf } from '@storybook/react';
@@ -176,6 +177,24 @@ storiesOf('Form fields', module)
       defaultValue="Hacksaw"
     />
   ))
+
+  .addWithJSX('autocomplete', () => (
+    <LabeledControl
+      autocomplete="off"
+      id="lizst"
+      label="Type ahead"
+      list="franz"
+      Slot={
+        <datalist id="franz">
+          <option value="Abacus" />
+          <option value="Dennis" />
+          <option value="Ferdinand" />
+          <option value="Zeppelin" />
+        </datalist>
+      }
+    />
+  ))
+
   .addWithJSX('textarea', () => (
     <LabeledControl
       id="bear"
