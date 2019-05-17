@@ -1,4 +1,4 @@
-Joo-Janta-CC is a component library with a point of view. Like the fabled “peril sensitive glasses” written about by Douglas Adams, JJCC seek to protect from the complexity of frontend concerns like styling, semantics, and accessibility. Responsiveness, ARIA standards, and flexibility are built into its foundations. These are lessons learned from years of experience developing frontend components. 
+Joo-Janta-CC is a component library with a point of view. Like the fabled [“peril sensitive glasses” written about by Douglas Adams](https://www.goodreads.com/quotes/472095-joo-janta-200-super-chromatic-peril-sensitive-sunglasses-have-been-specially), JJCC seek to protect from the complexity of frontend concerns like styling, semantics, and accessibility. Responsiveness, ARIA standards, and flexibility are built into its foundations. These are lessons learned from years of experience developing frontend components. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [Storybook](https://storybook.js.org/) as a component explorer.
 
