@@ -1,5 +1,5 @@
-import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Indicator = ({ ...rest }) => (
@@ -9,8 +9,8 @@ const Indicator = ({ ...rest }) => (
 
 
 const StyledTooltip = styled.span`
-  background: ${props => props.theme.mode === 'dark' ? '#fff' : '#000'};
-  color: ${props => props.theme.mode === 'dark' ? '#000' : '#fff'};
+  background: ${props => props.theme.fg};
+  color: ${props => props.theme.bg};
   display: block;
   font-weight: normal;
   max-width: 400px;
@@ -30,7 +30,7 @@ const StyledTooltip = styled.span`
   &::after {
     content: '';
     border: .5rem solid transparent;
-    border-bottom-color: ${props => props.theme.mode === 'dark' ? '#fff' : '#000'};
+    border-bottom-color: ${props => props.theme.fg};
     position: absolute;
     top: -1rem;
     left: 50%;
@@ -71,13 +71,11 @@ const StyledTooltipOpener = styled.span`
 `;
 
 const Tooltip = ({ align, children, showIndicator, text, ...rest }) => (
-  <ThemeProvider theme={{ mode: 'light' }}>
-    <StyledTooltipOpener {...rest} showIndicator={showIndicator}>
-      {children}
-      {showIndicator ? <StyledIndicator showIndicator={showIndicator} /> : null}
-      <StyledTooltip align={align}>{text}</StyledTooltip>
-    </StyledTooltipOpener>
-  </ThemeProvider>
+  <StyledTooltipOpener {...rest} showIndicator={showIndicator}>
+    {children}
+    {showIndicator ? <StyledIndicator showIndicator={showIndicator} /> : null}
+    <StyledTooltip align={align}>{text}</StyledTooltip>
+  </StyledTooltipOpener>
 );
 
 Tooltip.propTypes = {
