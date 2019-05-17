@@ -1,14 +1,18 @@
 Joo-Janta-CC is a component library with a point of view. Like the fabled “peril sensitive glasses” written about by Douglas Adams, JJCC seek to protect from the complexity of frontend concerns like styling, semantics, and accessibility. Responsiveness, ARIA standards, and flexibility are built into its foundations. These are lessons learned from years of experience developing frontend components. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [Storybook](https://storybook.js.org/) as a component explorer.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `yarn run storybook`
+
+Runs Storybook and opens it in a browser. Use this to explore the various components.
+
 ### `yarn start`
 
-Runs the app in the development mode.<br>
+Runs the sample app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
