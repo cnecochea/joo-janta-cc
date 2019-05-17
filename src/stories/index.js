@@ -4,6 +4,7 @@ import { setAddon, storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { JSXAddon } from 'storybook-addon-jsx';
+import { themes } from '../shared/Themes';
 
 import { Welcome } from '@storybook/react/demo';
 

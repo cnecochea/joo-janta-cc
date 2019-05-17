@@ -1,3 +1,7 @@
+import { createGlobalStyle } from 'styled-components';
+
+// Tokens
+
 export const CONTROL_HEIGHT = '2.5rem';
 export const CONTROL_PADDING = '0 1rem';
 export const CONTROL_BORDER_STYLE = 'solid';
@@ -6,6 +10,18 @@ export const CONTROL_BORDER_COLOR = 'currentColor';
 export const ERROR_COLOR = 'red';
 export const FOCUS_COLOR = 'lightgreen';
 export const TOGGLE_OFF_COLOR = '#ccc';
+
+export const GlobalStyle = createGlobalStyle`
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: ${props => props.theme.bg};
+    color: ${props => props.theme.fg};
+    font-family: sans-serif;
+  }
+`;
 
 // from: https://github.com/medialize/ally.js/blob/master/docs/tutorials/hiding-elements.md#2017-edition-of-visuallyhidden
 export const MixinVisuallyHidden = `
