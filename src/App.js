@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Heading from './components/Heading';
+import Layout from './components/Layout';
+import { ThemeProvider } from 'styled-components';
+import { themes } from './shared/Themes';
 
-function App() {
+const Nav = (
+  <div>
+    <Heading as="h1">Ahoy</Heading>
+    <nav>
+      These are some navigation items
+    </nav>
+  </div>
+);
+
+const App = props => {
+  const [ theme, setTheme ] = useState(themes.home);
+
+  // useEffect(() => {
+  //   setTheme(themes[venue.theme]);
+  // });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Layout
+        topContent={Nav}
+      >
+        Food goes in here!
+      </Layout>
+    </ThemeProvider>
   );
 }
 
