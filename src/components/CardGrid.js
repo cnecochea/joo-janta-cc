@@ -9,6 +9,10 @@ const StyledCardGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(calc(${props => (100 / props.columns)}% - ${props => props.gap}), 1fr) ) ;
   grid-gap: ${props => props.gap};
   padding: calc(${props => props.gap} / 2);
+
+  && > * {
+    margin: 0;
+  }
 `;
 
 const CardGrid= ({ children, columns, gap, ...rest }) => (
