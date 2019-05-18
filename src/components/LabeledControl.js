@@ -15,7 +15,7 @@ const StyledLabel = styled.label`
 
 const StyledSmall = styled.small`
   display: block;
-  color: #333;
+  color: ${props => props.theme.help};
 `;
 
 const sharedInputStyles = css`
