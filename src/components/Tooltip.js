@@ -12,6 +12,7 @@ const StyledTooltip = styled.span`
   background: ${props => props.theme.fg};
   color: ${props => props.theme.bg};
   display: block;
+  filter: drop-shadow(0 0 3px ${props => props.theme.bg});
   font-weight: normal;
   max-width: 400px;
   opacity: 0;
