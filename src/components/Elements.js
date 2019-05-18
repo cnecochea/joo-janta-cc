@@ -14,6 +14,7 @@ export const Icon = styled.span`
 `;
 
 export const A = styled.a`
+  color: ${props => props.theme.link};
   text-decoration: underline;
 
   &:hover, &:focus {
@@ -56,6 +57,14 @@ export const StyledFlexWrapper = styled.div`
   justify-content: ${props => props.justify};
 `;
 
-export const FlexWrapper = ({ children, align, justify, ...rest }) => (
-  <StyledFlexWrapper {...rest} align={align} justify={justify}>{children}</StyledFlexWrapper>
+export const FlexWrapper = ({
+  children, align, justify, ...rest
+}) => (
+  <StyledFlexWrapper
+    {...rest}
+    align={align}
+    justify={justify}
+  >
+    {children}
+  </StyledFlexWrapper>
 );

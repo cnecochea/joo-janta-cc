@@ -15,7 +15,7 @@ import CardGrid from '../components/CardGrid';
 import CheckboxGroup from '../components/CheckboxGroup';
 import DataTable from '../components/DataTable';
 import { FlexWrapper, P, A, Icon, Tr, Th, Td } from '../components/Elements';
-// import Heading from '../components/Heading';
+import Heading from '../components/Heading';
 import LabeledControl from '../components/LabeledControl';
 import Layout from '../components/Layout';
 import RadioGroup from '../components/RadioGroup';
@@ -34,9 +34,6 @@ const Test = ({
     {children}
   </div>
 );
-
-
-storiesOf('Welcome', module).addWithJSX('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
   .addWithJSX('standalone', () => <Button onClick={action('clicked')}>Default button</Button>)
@@ -102,6 +99,15 @@ storiesOf('DataTable', module)
   ));
 
 storiesOf('Elements', module)
+  .addWithJSX('Headings', () => (
+    <>
+      { ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map((item, index) => {
+        return (
+          <Heading as={item}>Heading {index + 1}</Heading>
+        );
+      }) }
+    </>
+  ))
   .addWithJSX('Paragraph', () => (
     <>
     <P>There's nothing too fancy about these. They're the foundation of basic typographical styles.</P>
