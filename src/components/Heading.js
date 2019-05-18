@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import BoxModel from './BoxModel';
 
 const StyledHeading = styled(BoxModel)`
-  font-weight: 800;
+  color: ${props => props.theme.heading};
+  text-shadow:
+    1px 0px 1px ${props => props.theme.highlight},
+    0px 1px 1px ${props => props.theme.highlight},
+    -1px -1px 1px ${props => props.theme.highlight};
+  font-weight: 900;
   margin: ${props => props.spacing };
 `;
 
