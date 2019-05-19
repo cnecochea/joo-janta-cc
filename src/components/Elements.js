@@ -22,6 +22,10 @@ export const A = styled.a`
   }
 `;
 
+export const Img = styled.img`
+  max-width: 100%;
+`;
+
 export const Table = styled.table`
   border-collapse: collapse;
 `;
@@ -58,10 +62,10 @@ export const StyledFlexWrapper = styled.div`
 `;
 
 export const FlexWrapper = ({
-  children, align, justify, ...rest
+  children, align, justify, ...props
 }) => (
   <StyledFlexWrapper
-    {...rest}
+    {...props}
     align={align}
     justify={justify}
   >
