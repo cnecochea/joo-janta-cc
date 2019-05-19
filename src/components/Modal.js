@@ -1,7 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import CloseButton from './CloseButton';
 import { FlexWrapper } from './Elements';
+
+const StyledCloseButton = styled(CloseButton)`
+  color: ${props => props.theme.bg};
+  grid-area: close;
+`;
+
+const StyledHeader = styled(props => <header {...props} />)`
+  grid-area: header;
+  padding: 1rem;
+`;
+
+const StyledMain = styled(props => <main {...props} />)`
+  border-top: ${props => props.titleText && '1px solid currentColor'};
+  grid-area: main;
+  padding: 1rem;
+`;
+
+const StyledFooter = styled(props => <footer {...props} />)`
+  border-top: 1px solid currentColor;
+  grid-area: footer;
+  padding: 1rem;
+`;
 
 const StyledOverlay = styled(FlexWrapper).attrs({
   align: 'center',
@@ -17,13 +40,15 @@ const StyledOverlay = styled(FlexWrapper).attrs({
 
 const StyledModal = styled.div`
   border: 1px solid currentColor;
-  background: #fff;
+  background-color: ${props => props.theme.fg};
+  color: ${props => props.theme.bg};
   display: grid;
   grid-template-areas:
     'header  close'
     'main    main'
     'footer  footer';
   grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   position: absolute;
   max-width: 100%;
   width: 600px;
@@ -33,44 +58,32 @@ const StyledModal = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const StyledHeader = styled(props => {
-  return <header {...props} />
-})`
-  border-bottom: 1px solid currentColor;
-  grid-area: header;
-  padding: 1rem;
-`;
-
-const StyledMain = styled(props => {
-  return <main {...props} />
-})`
-  grid-area: main;
-  padding: 1rem;
-`;
-
-const StyledFooter = styled(props => {
-  return <footer {...props} />
-})`
-  border-top: 1px solid currentColor;
-  grid-area: footer;
-  padding: 1rem;
-`;
-
-const Modal = (props) => {
-  const { children, show, closeCallback, ...rest } = props;
+const Modal = ({
+  children,
+  show,
+  closeCallback,
+  Footer,
+  footerContent,
+  Header,
+  Main,
+  titleText,
+  ...props
+}) => {
   return (
     <>
       <StyledOverlay hidden={!show} onClick={closeCallback} />
       <StyledModal
-        {...rest}
+        {...props}
         aria-modal={true}
         role="dialog"
         hidden={!show}
       >
-        <Main>
+        {titleText && <StyledHeader>{titleText}</StyledHeader>}
+        <StyledCloseButton onClick={closeCallback} />        
+        <Main titleText={titleText}>
           {children}
         </Main>
-        <button onClick={closeCallback}>&times;</button>        
+        {footerContent && <Footer>{footerContent}</Footer>}
       </StyledModal>
     </>
   );
@@ -95,3 +108,4 @@ Modal.defaultProps = {
   Main: StyledMain,
 };
 
+export default Modal;
