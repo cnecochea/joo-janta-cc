@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import CloseButton from './CloseButton';
 import { FlexWrapper } from './Elements';
+import * as Styles from '../shared/Styles';
 
 const StyledCloseButton = styled(CloseButton)`
   color: ${props => props.theme.bg};
@@ -46,12 +47,20 @@ const StyledOverlay = styled(FlexWrapper).attrs({
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .5)
+  background-color: rgba(0, 0, 0, .5);
+  ${props => setModalVisibilityStyles(props.show)};
+`;
+
+const setModalVisibilityStyles = show => css`
+  opacity: ${show ? 1 : 0};
+  visibility: ${show ? 'visible' : 'hidden'};
 `;
 
 const StyledModal = styled.div`
   border: 1px solid currentColor;
   background-color: ${props => props.theme.fg};
+  border-bottom-left-radius: ${props => props.footerContent && Styles.CONTROL_HEIGHT};
+  box-shadow: ${props => props.theme.highlight} 0 0 12px 0;
   color: ${props => props.theme.bg};
   display: grid;
   grid-template-areas:
@@ -67,6 +76,7 @@ const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  ${props => setModalVisibilityStyles(props.show)};
 `;
 
 const Modal = ({
@@ -82,15 +92,16 @@ const Modal = ({
 }) => {
   return (
     <>
-      <StyledOverlay hidden={!show} onClick={closeCallback} />
+      <StyledOverlay show={show} onClick={closeCallback} />
       <StyledModal
         {...props}
         aria-modal={true}
+        footerContent={footerContent}
         role="dialog"
-        hidden={!show}
+        show={show}
       >
         {titleText && <StyledHeader>{titleText}</StyledHeader>}
-        <StyledCloseButton onClick={closeCallback} />        
+        <StyledCloseButton closeCallback={closeCallback} />
         <Main titleText={titleText}>
           <ScrollRegion>
             {children}
