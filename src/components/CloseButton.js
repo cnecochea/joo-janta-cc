@@ -7,9 +7,16 @@ const StyledCloseButton = styled.button`
   appearance: none;
   background: transparent;
   border: 0;
+  display: inline-block;
   height: ${CONTROL_HEIGHT};
   padding: 0;
+  transition: transform .25s ease-out;
   width: ${CONTROL_HEIGHT};
+
+  &:focus, &:hover {
+    transform: scale(1.5);
+    transform-origin: center;
+  }
 `;
 
 const CloseAffordance = () => (
@@ -32,5 +39,9 @@ const CloseButton = ({
     <CloseAffordance />
   </StyledCloseButton>
 );
+
+CloseButton.propTypes = {
+  closeCallback: PropTypes.bool,
+};
 
 export default CloseButton;
