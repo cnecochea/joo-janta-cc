@@ -24,15 +24,15 @@ const StyledButton = styled.button`
   }
 
   &:first-child {
-    border-radius: 2.5rem 0 0 2.5rem;
+    border-radius: ${Styles.CONTROL_HEIGHT} 0 0 ${Styles.CONTROL_HEIGHT};
 
     &:last-child {
-      border-radius: 2.5rem;
+      border-radius: ${Styles.CONTROL_HEIGHT};
     }
   }
 
   &:last-child {
-    border-radius: 0 2.5rem 2.5rem 0;
+    border-radius: 0 ${Styles.CONTROL_HEIGHT} ${Styles.CONTROL_HEIGHT} 0;
   }
 
   &::before {
