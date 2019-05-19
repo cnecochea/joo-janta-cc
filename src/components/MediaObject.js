@@ -6,7 +6,7 @@ import { FlexWrapper } from './Elements';
 const StyledMediaWrapper = styled(FlexWrapper)`
   flex-wrap: ${props => props.responsive && 'wrap'};
 
-  & * + * {
+  & > * + * {
     margin-left: ${props => props.gap};
   }
 
