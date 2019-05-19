@@ -268,7 +268,8 @@ storiesOf('Modal', module)
           <Heading as="h2" spacing="0">Optional title</Heading>
         }
       >
-        Ahoy there
+        <div style={{ height: 1000 }}>Scroll for more</div>
+        Bottom of scroll region
       </Modal>
     </>
   ));

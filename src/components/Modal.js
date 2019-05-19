@@ -17,7 +17,18 @@ const StyledHeader = styled(props => <header {...props} />)`
 const StyledMain = styled(props => <main {...props} />)`
   border-top: ${props => props.titleText && '1px solid currentColor'};
   grid-area: main;
+  position: relative;
+`;
+
+const ScrollRegion = styled.div`
   padding: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  overflow: auto;
 `;
 
 const StyledFooter = styled(props => <footer {...props} />)`
@@ -81,7 +92,9 @@ const Modal = ({
         {titleText && <StyledHeader>{titleText}</StyledHeader>}
         <StyledCloseButton onClick={closeCallback} />        
         <Main titleText={titleText}>
-          {children}
+          <ScrollRegion>
+            {children}
+          </ScrollRegion>
         </Main>
         {footerContent && <Footer>{footerContent}</Footer>}
       </StyledModal>
