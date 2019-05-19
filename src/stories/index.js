@@ -18,6 +18,7 @@ import { FlexWrapper, P, A, Icon, Tr, Th, Td } from '../components/Elements';
 import Heading from '../components/Heading';
 import LabeledControl from '../components/LabeledControl';
 import Layout from '../components/Layout';
+import Modal from '../components/Modal';
 import RadioGroup from '../components/RadioGroup';
 import Tooltip from '../components/Tooltip';
 
@@ -118,12 +119,7 @@ storiesOf('Elements', module)
     <>
       <A href="#">Hyperlink styling</A>
     </>
-  ))
-  .addWithJSX('Icons', () => (
-    <>
-      <Icon></Icon> These really should be SVGs. In progress.
-    </>
-));
+  ));
   
   storiesOf('FlexWrapper', module)
     .addWithJSX('Justify between', () => (
@@ -222,6 +218,60 @@ storiesOf('Layouts', module)
       Ahoy
     </Layout>
   ))
+
+storiesOf('Modal', module)
+  .addWithJSX('normal usage', () => (
+    <>
+      <Modal show={true}>
+        Ahoy there
+      </Modal>
+    </>
+  ))
+  .addWithJSX('with header', () => (
+    <>
+      <Modal
+        show={true}
+        titleText={
+          <Heading as="h2" spacing="0">Optional title</Heading>
+        }
+      >
+        Ahoy there
+      </Modal>
+    </>
+  ))
+  .addWithJSX('with footer', () => (
+    <>
+      <Modal
+        show={true}
+        footerContent={
+          <>
+            <Button use="primary">Save</Button>
+            <Button>Cancel</Button>
+          </>
+        }
+      >
+        Ahoy there
+      </Modal>
+    </>
+  ))
+  .addWithJSX('with header & footer', () => (
+    <>
+      <Modal
+        show={true}
+        footerContent={
+          <>
+            <Button use="primary">Save</Button>
+            <Button>Cancel</Button>
+          </>
+        }
+        titleText={
+          <Heading as="h2" spacing="0">Optional title</Heading>
+        }
+      >
+        Ahoy there
+      </Modal>
+    </>
+  ));
 
 storiesOf('RadioGroup', module)
   .addWithJSX('normal usage', () => (
