@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   background: ${props => props.use === 'primary' ? props.theme.highlight : 'rgba(255, 255, 255, 0.15)'};
   border: thin solid ${props => props.theme.fg};
   border: ${Styles.CONTROL_BORDER_WIDTH} ${Styles.CONTROL_BORDER_STYLE} ${Styles.CONTROL_BORDER_COLOR};
-  color: ${props => props.use === 'primary' ? props.theme.fg : 'currentColor'};
+  color: currentColor;
   display: inline-block;
   font-size: inherit;
   font-weight: ${props => props.use === 'primary' && 700};
