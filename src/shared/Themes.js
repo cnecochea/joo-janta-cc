@@ -6,6 +6,7 @@ export const themes  = {
     help: '#333',
     highlight: 'gold',
     link: '#000',
+    primaryfg: '#000',
   },
   home: {
     bg: '#000',
@@ -14,6 +15,7 @@ export const themes  = {
     help: '#f1f1f1',
     highlight: 'gold',
     link: '#fff',
+    primaryfg: '#000',
   },
   winter: {
     bg: 'rgb(49, 24, 7)',
@@ -22,5 +24,6 @@ export const themes  = {
     help: '#f1f1f1',
     highlight: 'gold',
     link: 'gold',
+    primaryfg: '#000',
   },
 };
