@@ -43,6 +43,27 @@ export const UL = styled.ul`
   }
 `;
 
+export const Tabs = styled.div.attrs({
+  role: 'tablist',
+})`
+  align-items: stretch;
+  display: flex;
+`;
+
+export const Tab = styled.div.attrs({
+  role: 'tab',
+})`
+  align-items: center;
+  border-bottom: ${props => props['aria-selected'] ? `thick solid ${props.theme.highlight}` : 'thick solid transparent'};
+  display: inline-flex;
+  padding: 0 2rem;
+  transition: border-bottom .15s ease-out;
+
+  &:hover, &:focus {
+    border-bottom: ${props => `thick solid ${props.theme.fg}`};
+  }
+`;
+
 export const Table = styled.table`
   border-collapse: collapse;
 `;
