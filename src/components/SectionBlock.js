@@ -37,7 +37,7 @@ SectionBlock.propTypes = {
   children: PropTypes.node,
   titleText: PropTypes.node,
   headingTag: PropTypes.oneOf(HEADING_SIZES),
-  spacing: PropTypes.number,
+  spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   use: PropTypes.oneOf(['normal', 'prose']),
 }
 

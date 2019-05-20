@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FlexWrapper } from './Elements';
 import * as Styles from '../shared/Styles';
