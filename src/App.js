@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './components/Button';
 import Card from './components/Card';
-import CardGrid from './components/Card';
+import CardGrid from './components/CardGrid';
 import { A, Img, FlexWrapper, P, UL } from './components/Elements';
 import Heading from './components/Heading';
 import Layout from './components/Layout';
