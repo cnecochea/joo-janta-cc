@@ -10,7 +10,7 @@ const StyledSection = styled.section`
     font-family: ${props => props.use === 'prose' && 'Georgia, serif'};
 
     ${props => props.use === 'prose' && css`
-      font-family: 'Georgia', serif;
+      font-family: 'Garamond', 'Georgia', serif;
       line-height: 1.8;
     `};
   }
