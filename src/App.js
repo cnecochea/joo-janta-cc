@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import 'datalist-polyfill';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from './components/Button';
 import Card from './components/Card';
@@ -8,24 +9,27 @@ import Heading from './components/Heading';
 import Layout from './components/Layout';
 import MediaObject from './components/MediaObject';
 import Modal from './components/Modal';
+import RadioGroup from './components/RadioGroup';
 import SectionBlock from './components/SectionBlock';
 import Tooltip from './components/Tooltip';
 import { ThemeProvider } from 'styled-components';
 import { themes } from './shared/Themes';
 import { GlobalStyle } from './shared/Styles';
+import LabeledControl from './components/LabeledControl';
 
 const CHIRPS = [
   { name: 'Pasta', avatar: 'http://placekitten.com/g/40/40', message: '🦓 Check your voicemail. You missed some calls.', timestamp: 'May 19, 2018' },
-  { name: 'Marshie', avatar: 'http://placekitten.com/g/40/40', message: 'Chirp, chirp, chirp', timestamp: 'May 4, 2019' },
-  { name: 'Torts', avatar: 'http://placekitten.com/g/40/40', message: 'Make like a tree and get out of here', timestamp: 'Apr 15, 2019' },
-  { name: 'Thorty', avatar: 'http://placekitten.com/g/40/40', message: 'Does your coach know you\'re out here?', timestamp: 'Feb 29, 2019' },
+  { name: 'Marshie', avatar: 'http://placekitten.com/g/40/40', message: "I've seen better hands on a clock.", timestamp: 'May 4, 2019' },
+  { name: 'Torts', avatar: 'http://placekitten.com/g/40/40', message: "If you don't block shots, you don't leave the bench", timestamp: 'Apr 15, 2019' },
+  { name: 'Thorty', avatar: 'http://placekitten.com/g/40/40', message: "Does your coach know you're out here?", timestamp: 'Feb 29, 2019' },
   { name: 'Kaner', avatar: 'http://placekitten.com/g/40/40', message: 'Can I borrow your hands? I need a stone for my skates', timestamp: 'Dec 7, 2018' },
   { name: 'Giroux', avatar: 'http://placekitten.com/g/40/40', message: '(Pigeon sounds) 🐦🐦🐦🐦', timestamp: 'Jul 4, 2018' },
+  { name: 'Marshie', avatar: 'http://placekitten.com/g/40/40', message: "You should switch to Geico. You'll save more", timestamp: 'May 4, 2019' },
 ];
 
 /**
 "I've seen better hands on a clock."
-"I've seen bigger hits in Little League."
+You should switch to Geico. You'll save more
 "I've got more ice in my drink than you've seen all game."
 You should switch to Geico. You'll save more.
  * 
@@ -47,9 +51,6 @@ const Hero = styled(FlexWrapper).attrs({
   margin: 0 calc(50% - 50vw);
   overflow: hidden;
   padding: 0 1rem;
-`;
-
-const Chirp = styled(Card)`
 `;
 
 const ChirpAction = styled.button`
@@ -122,11 +123,11 @@ const About = (
 const Trending = (
     <CardGrid columns={1}>
       <Card>
-        <SectionBlock titleText="Login">
+        <SectionBlock titleText="New users?">
           <div>
-            <Button use="primary">Login</Button>
+            <Button>Sign up</Button>
           </div>
-          <small>Not a member? <A href="#">Join now</A></small>
+          <small>Alredy a member? <A href="#">Login</A></small>
         </SectionBlock>
       </Card>
       <Card>
@@ -172,7 +173,7 @@ const Copyright = (
 );
 
 const App = props => {
-  const [ theme, setTheme ] = useState(themes.home);
+  const [ theme, setTheme ] = useState(themes.away);
   const [ showing, showModal ] = useState(false);
 
   const toggleModal = () => {
@@ -194,7 +195,7 @@ const App = props => {
           <CardGrid columns={1}>
             {CHIRPS.map((item, index) => {
               return (
-                <Card>
+                <Card key={index}>
                   <MediaObject
                     item={<Avatar src="http://placekitten.com/g/50/50" alt={item.name} />}
                     spacing="2rem"
@@ -223,8 +224,42 @@ const App = props => {
           </CardGrid>
 
         </Layout>
-        <Modal show={showing} closeCallback={toggleModal}>
-          Ahoy there
+        <Modal
+          titleText={
+            <Heading as="h2" spacing="0">Compose chirp</Heading>
+          }
+          footerContent={
+            <Button onClick={toggleModal} use="primary">Send</Button>
+          }
+          height="400px"
+          width="300px"
+          show={showing}
+          closeCallback={toggleModal}
+        >
+          <form>
+            <LabeledControl
+              autocomplete="off"
+              id="chirp_recipient"
+              label="Chirp going out to:"
+              list="ire"
+              placeholder="@..."
+              Slot={
+                <datalist id="ire">
+                  <option value="@Dion Phaneuf" />
+                  <option value="@Sean Avery" />
+                  <option value="@Alexander Burrows" />
+                </datalist>
+              }
+            />
+            <LabeledControl
+              id="chirp_body"
+              type="textarea"
+              label="Chirp away"
+              value="I've got more ice in my drink than you've seen all game."
+            />
+            <p>
+            </p>
+          </form>
         </Modal>
       </>
     </ThemeProvider>
