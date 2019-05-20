@@ -74,6 +74,10 @@ const StyledNav = styled.nav`
   padding: .5rem;
 `;
 
+const CustomFooter = styled(props => <Layout.defaultProps.Footer {...props} />)`
+  text-align: center;
+`;
+
 const Nav = callback => (
   <>
     <Hero>
@@ -136,6 +140,7 @@ const App = props => {
         <Layout
           topContent={Nav(toggleModal)}
           asideContent={Trending}
+          Footer={CustomFooter}
           footerContent={Copyright}
           sideContent={About}
         >
