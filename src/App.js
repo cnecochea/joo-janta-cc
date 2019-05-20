@@ -120,9 +120,42 @@ const About = (
 );
 
 const Trending = (
-  <SectionBlock titleText="Trending">
-    dlskd;lksdl sdk;lsdk;sk ;lsdk;lsdk
-  </SectionBlock>
+    <CardGrid columns={1}>
+      <Card>
+        <SectionBlock titleText="Login">
+          <div>
+            <Button use="primary">Login</Button>
+          </div>
+          <small>Not a member? <A href="#">Join now</A></small>
+        </SectionBlock>
+      </Card>
+      <Card>
+        <SectionBlock titleText="Trending">
+          <UL unstyled={true}>
+            <li>
+              <A href="#">#Bardownski</A>
+              <br />
+              <small>440 chirps</small>
+            </li>
+            <li>
+              <A href="#">#TopCheddar</A>
+              <br />
+              <small>18K chirps</small>
+            </li>
+            <li>
+              <A href="#">#DangleSauce</A>
+              <br />
+              <small>891 chirps</small>
+            </li>
+            <li>
+              <A href="#">#Ferda</A>
+              <br />
+              <small>144K chirps</small>
+            </li>
+          </UL>
+        </SectionBlock>
+      </Card>
+    </CardGrid>
 );
 
 const Copyright = (
