@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const P = styled.p`
   margin-bottom: 0;
@@ -27,13 +27,18 @@ export const Img = styled.img`
 `;
 
 export const UL = styled.ul`
-  list-style: ${props => props.unstyled && 'none'};
+  ${props => props.unstyled && css`
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  `};
 
   > li {
-    display: inline-block;
+    display: ${props => props.inline && 'inline-block'};
 
     & + li {
-      margin-left: 1ch;
+      margin-left: ${props => props.inline && '1ch'};
+      margin-top: ${props => props.unstyled && !props.inline && '1rem'};
     }
   }
 `;
