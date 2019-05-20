@@ -22,6 +22,22 @@ export const A = styled.a`
   }
 `;
 
+export const Img = styled.img`
+  max-width: 100%;
+`;
+
+export const UL = styled.ul`
+  list-style: ${props => props.unstyled && 'none'};
+
+  > li {
+    display: inline-block;
+
+    & + li {
+      margin-left: 1ch;
+    }
+  }
+`;
+
 export const Table = styled.table`
   border-collapse: collapse;
 `;
@@ -58,10 +74,10 @@ export const StyledFlexWrapper = styled.div`
 `;
 
 export const FlexWrapper = ({
-  children, align, justify, ...rest
+  children, align, justify, ...props
 }) => (
   <StyledFlexWrapper
-    {...rest}
+    {...props}
     align={align}
     justify={justify}
   >

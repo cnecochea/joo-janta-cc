@@ -7,24 +7,59 @@ const StyledLayout = styled.div`
   color: ${props => props.theme.fg};
   display: grid;
   grid-gap: 1rem;
+  grid-template-areas:
+    'banner   banner    banner'
+    'alert    alert     alert'
+    'nav      main      aside'
+    '.        footer    .';
+  grid-template-columns: minmax(300px, 20%) 1fr minmax(300px, 20%);
+  grid-template-rows: auto auto 1fr auto;
+  margin: 0 auto;
+  max-width: 1200px;
   min-height: 100vh;
+  padding: 1rem;
+  padding-top: 0;
 
-  > * {
-    outline: 1px dotted ${props => props.theme.highlight};
+  @media only screen and (max-width: 1100px) {
+    grid-template-areas: 
+      'banner   banner'
+      'alert    alert'
+      'nav      main '
+      'nav      aside'
+      '.        footer';
+    grid-template-columns: minmax(250px, 20%) 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: block;
   }
 `;
 
-const StyledAside = styled.aside``;
-
-const StyledTopNavigation = styled.div`
-  grid-area: top;
+const StyledAside = styled.aside`
+  grid-area: aside;
 `;
 
-const StyledNotification = styled.div``;
+const StyledTopNavigation = styled.div`
+  grid-area: banner;
+`;
 
-const StyledSideNavigation = styled.div``;
+const StyledNotification = styled.div`
+  grid-area: alert;
+`;
 
-const StyledFooter = styled.footer``;
+const StyledSideNavigation = styled.div`
+  grid-area: nav;
+`;
+
+const StyledMain = styled.main`
+  display: block;
+  grid-area: main;
+`;
+
+const StyledFooter = styled.footer`
+  grid-area: footer;
+`;
 
 const Layout = ({
   Aside,
@@ -44,8 +79,9 @@ const Layout = ({
     {topContent ? <TopNavigation>{topContent}</TopNavigation> : null}
     {notificationContent ? <Notification>{notificationContent}</Notification>: null}
     {sideContent ? <SideNavigation>{sideContent}</SideNavigation> : null}
-    <main>{children}</main>
+    <StyledMain>{children}</StyledMain>
     {asideContent ? <Aside>{asideContent}</Aside> : null}
+    {footerContent ? <Footer>{footerContent}</Footer> : null}
   </StyledLayout>
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import BoxModel from './BoxModel';
+import { HEADING_SIZES } from '../shared/Constants';
 
 const StyledHeading = styled(BoxModel)`
   color: ${props => props.theme.heading};
@@ -20,7 +21,7 @@ const Heading = ({ as, children, className, spacing, ...rest }) => (
 );
 
 Heading.propTypes = {
-  as: PropTypes.string,
+  as: PropTypes.oneOf(HEADING_SIZES),
   children: PropTypes.node,
   className: PropTypes.string,
   // ...BoxModel.propTypes,

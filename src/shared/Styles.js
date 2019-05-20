@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.bg};
     color: ${props => props.theme.fg};
     font-family: sans-serif;
+    line-height: 1.6;
   }
 `;
 
