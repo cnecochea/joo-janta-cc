@@ -61,6 +61,7 @@ const App = props => {
   return (
     <ThemeProvider theme={theme}>
       <>
+        <GlobalStyle />
         <Layout
           topContent={Nav}
         >
