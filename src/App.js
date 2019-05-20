@@ -90,8 +90,15 @@ const Nav = callback => (
       <Heading as="h1">Chirper</Heading>
     </Hero>
     <StyledNav>
-      <FlexWrapper justify="flex-end">
-        <Button onClick={callback} use="primary">Chirp</Button>
+      <FlexWrapper align="stretch" justify="space-between">
+        <Tabs>
+          <Tab aria-selected={true}>Chirps</Tab>
+          <Tab>Cellies</Tab>
+          <Tab>Snipes</Tab>
+        </Tabs>
+        <div>
+          <Button onClick={callback} use="primary">Chirp</Button>
+        </div>
       </FlexWrapper>
     </StyledNav>
   </>
