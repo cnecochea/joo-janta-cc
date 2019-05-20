@@ -69,14 +69,14 @@ const StyledModal = styled.div`
     'footer  footer';
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr auto;
+  height: ${props => props.height};
   position: absolute;
   max-width: 100%;
-  width: 600px;
-  height: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   ${props => setModalVisibilityStyles(props.show)};
+  width: ${props => props.width};
 `;
 
 const Modal = ({
@@ -86,8 +86,10 @@ const Modal = ({
   Footer,
   footerContent,
   Header,
+  height,
   Main,
   titleText,
+  width,
   ...props
 }) => {
   return (
@@ -97,8 +99,10 @@ const Modal = ({
         {...props}
         aria-modal={true}
         footerContent={footerContent}
+        height={height}
         role="dialog"
         show={show}
+        width={width}
       >
         {titleText && <StyledHeader>{titleText}</StyledHeader>}
         <StyledCloseButton closeCallback={closeCallback} />
@@ -115,21 +119,26 @@ const Modal = ({
 
 Modal.propTypes = {
   children: PropTypes.node,
+  closeCallback: PropTypes.func,
+  footerContent: PropTypes.node,
   Footer: PropTypes.func,
+  height: PropTypes.string,
   Main: PropTypes.func,
   Header: PropTypes.func,
   titleText: PropTypes.node,
   show: PropTypes.bool,
-  closeCallback: PropTypes.func,
+  width: PropTypes.string,
 };
 
 Modal.defaultProps = {
   children: <div>Empty</div>,
-  show: false,
   closeCallback: () => (false),
   Footer: StyledFooter,
   Header: StyledHeader,
+  height: '80%',
   Main: StyledMain,
+  show: false,
+  width: '600px',
 };
 
 export default Modal;

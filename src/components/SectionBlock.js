@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import Heading from './Heading';
-import { P, A } from './Elements';
+import { P } from './Elements';
 import { HEADING_SIZES } from '../shared/Constants';
 
 const StyledSection = styled.section`
@@ -10,7 +10,7 @@ const StyledSection = styled.section`
     font-family: ${props => props.use === 'prose' && 'Georgia, serif'};
 
     ${props => props.use === 'prose' && css`
-      font-family: 'Georgia', serif;
+      font-family: 'Garamond', 'Georgia', serif;
       line-height: 1.8;
     `};
   }
@@ -37,7 +37,7 @@ SectionBlock.propTypes = {
   children: PropTypes.node,
   titleText: PropTypes.node,
   headingTag: PropTypes.oneOf(HEADING_SIZES),
-  spacing: PropTypes.number,
+  spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   use: PropTypes.oneOf(['normal', 'prose']),
 }
 

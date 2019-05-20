@@ -2,6 +2,16 @@ Joo-Janta-CC is a component library with a point of view. Like the fabled [“pe
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [Storybook](https://storybook.js.org/) as a component explorer.
 
+## Desktop
+<img width="1392" alt="Screen Shot 2019-05-20 at 4 17 22 AM" src="https://user-images.githubusercontent.com/59408/58006593-6a71f300-7ab6-11e9-8ae1-92d858d2f0f2.png">
+
+## Tablet
+<img width="1098" alt="Screen Shot 2019-05-20 at 4 17 42 AM" src="https://user-images.githubusercontent.com/59408/58006592-6a71f300-7ab6-11e9-83ff-cdd1301cce2d.png">
+
+## Mobile
+<img width="616" alt="Screen Shot 2019-05-20 at 4 20 16 AM" src="https://user-images.githubusercontent.com/59408/58006681-a0af7280-7ab6-11e9-82f6-37e8d82162df.png">
+
+
 ## Available Scripts
 
 In the project directory, you can run:

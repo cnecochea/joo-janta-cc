@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 import * as Styles from '../shared/Styles';
 import PropTypes from 'prop-types';
 
+const FIELD_MAX_WIDTH = '600px';
+
 const StyledLabelFieldPair = styled.div`
   & + & {
     margin-top: 1rem;
@@ -21,7 +23,9 @@ const StyledSmall = styled.small`
 const sharedInputStyles = css`
   border: ${Styles.CONTROL_BORDER_WIDTH} ${Styles.CONTROL_BORDER_STYLE} ${Styles.CONTROL_BORDER_COLOR};
   font-size: inherit;
+  max-width: ${FIELD_MAX_WIDTH};
   padding: ${Styles.CONTROL_PADDING};
+  width: 100%;
 
   &:focus {
     ${Styles.MixinFocusStyles};
@@ -50,6 +54,8 @@ const StyledTextarea = styled.textarea`
 const StyledFieldWrapper = styled.div`
   display: inline-block;
   position: relative;
+  max-width: ${FIELD_MAX_WIDTH};
+  width: 100%;
 
   &::after {
     color: currentColor;

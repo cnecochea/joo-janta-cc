@@ -1,31 +1,35 @@
-import React, { useState } from 'react';
+import 'datalist-polyfill';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from './components/Button';
 import Card from './components/Card';
-import CardGrid from './components/Card';
-import { A, Img, FlexWrapper, P, UL } from './components/Elements';
+import CardGrid from './components/CardGrid';
+import { A, Img, FlexWrapper, P, UL, Tab, Tabs } from './components/Elements';
 import Heading from './components/Heading';
 import Layout from './components/Layout';
 import MediaObject from './components/MediaObject';
 import Modal from './components/Modal';
+import RadioGroup from './components/RadioGroup';
 import SectionBlock from './components/SectionBlock';
 import Tooltip from './components/Tooltip';
 import { ThemeProvider } from 'styled-components';
 import { themes } from './shared/Themes';
 import { GlobalStyle } from './shared/Styles';
+import LabeledControl from './components/LabeledControl';
 
 const CHIRPS = [
   { name: 'Pasta', avatar: 'http://placekitten.com/g/40/40', message: '🦓 Check your voicemail. You missed some calls.', timestamp: 'May 19, 2018' },
-  { name: 'Marshie', avatar: 'http://placekitten.com/g/40/40', message: 'Chirp, chirp, chirp', timestamp: 'May 4, 2019' },
-  { name: 'Torts', avatar: 'http://placekitten.com/g/40/40', message: 'Make like a tree and get out of here', timestamp: 'Apr 15, 2019' },
-  { name: 'Thorty', avatar: 'http://placekitten.com/g/40/40', message: 'Does your coach know you\'re out here?', timestamp: 'Feb 29, 2019' },
+  { name: 'Marshie', avatar: 'http://placekitten.com/g/40/40', message: "I've seen better hands on a clock.", timestamp: 'May 4, 2019' },
+  { name: 'Torts', avatar: 'http://placekitten.com/g/40/40', message: "If you don't block shots, you don't leave the bench", timestamp: 'Apr 15, 2019' },
+  { name: 'Thorty', avatar: 'http://placekitten.com/g/40/40', message: "Does your coach know you're out here?", timestamp: 'Feb 29, 2019' },
   { name: 'Kaner', avatar: 'http://placekitten.com/g/40/40', message: 'Can I borrow your hands? I need a stone for my skates', timestamp: 'Dec 7, 2018' },
   { name: 'Giroux', avatar: 'http://placekitten.com/g/40/40', message: '(Pigeon sounds) 🐦🐦🐦🐦', timestamp: 'Jul 4, 2018' },
+  { name: 'Marshie', avatar: 'http://placekitten.com/g/40/40', message: "You should switch to Geico. You'll save more", timestamp: 'May 4, 2019' },
 ];
 
 /**
 "I've seen better hands on a clock."
-"I've seen bigger hits in Little League."
+You should switch to Geico. You'll save more
 "I've got more ice in my drink than you've seen all game."
 You should switch to Geico. You'll save more.
  * 
@@ -49,21 +53,24 @@ const Hero = styled(FlexWrapper).attrs({
   padding: 0 1rem;
 `;
 
-const Chirp = styled(Card)`
-`;
-
 const ChirpAction = styled.button`
   appearance: none;
   background: transparent;
   border: 0;
+  border-radius: .25rem;
   color: ${props => props.theme.fg};
   font-size: 1.5rem;
   font-weight: 900;
+
+  &:hover, &:focus {
+    background-color: ${props => props.theme.highlight};
+  }
 `;
 
 const ChirpActions = styled.div`
   color: ${props => props.theme.help};
   margin-top: 1rem;
+
 
   & * + * {
     margin-left: 1rem;
@@ -74,14 +81,25 @@ const StyledNav = styled.nav`
   padding: .5rem;
 `;
 
+const CustomFooter = styled(props => <Layout.defaultProps.Footer {...props} />)`
+  text-align: center;
+`;
+
 const Nav = callback => (
   <>
     <Hero>
       <Heading as="h1">Chirper</Heading>
     </Hero>
     <StyledNav>
-      <FlexWrapper justify="flex-end">
-        <Button onClick={callback} use="primary">Chirp</Button>
+      <FlexWrapper align="stretch" justify="space-between">
+        <Tabs>
+          <Tab aria-selected={true}>Chirps</Tab>
+          <Tab>Cellies</Tab>
+          <Tab>Snipes</Tab>
+        </Tabs>
+        <div>
+          <Button onClick={callback} use="primary">Chirp</Button>
+        </div>
       </FlexWrapper>
     </StyledNav>
   </>
@@ -93,7 +111,7 @@ const About = (
       <A href="https://www.purehockey.com/c/what-is-chirping-in-hockey" target="_blank">What is chirping? </A></Heading>
 
     <P><q>In any sport, there's an element of trash-talking designed to unnerve the
-    opponent and get him thinking about something other than the game at hand.
+    opponent and get them thinking about something other than the game at hand.
     Hockey insults are known as "chirps," and players use the best hockey chirps
     on ice rinks all across North America. Hockey chirps are common from peewee
     hockey all the way through the NHL, and the funniest chirps are told and
@@ -103,15 +121,48 @@ const About = (
 );
 
 const Trending = (
-  <SectionBlock titleText="Trending">
-    dlskd;lksdl sdk;lsdk;sk ;lsdk;lsdk
-  </SectionBlock>
+    <CardGrid columns={1}>
+      <Card>
+        <SectionBlock titleText="New users?">
+          <div>
+            <Button>Sign up</Button>
+          </div>
+          <small>Alredy a member? <A href="#">Login</A></small>
+        </SectionBlock>
+      </Card>
+      <Card>
+        <SectionBlock titleText="Trending">
+          <UL unstyled={true}>
+            <li>
+              <A href="#">#Bardownski</A>
+              <br />
+              <small>440 chirps</small>
+            </li>
+            <li>
+              <A href="#">#TopCheddar</A>
+              <br />
+              <small>18K chirps</small>
+            </li>
+            <li>
+              <A href="#">#DangleSauce</A>
+              <br />
+              <small>891 chirps</small>
+            </li>
+            <li>
+              <A href="#">#Ferda</A>
+              <br />
+              <small>144K chirps</small>
+            </li>
+          </UL>
+        </SectionBlock>
+      </Card>
+    </CardGrid>
 );
 
 const Copyright = (
   <SectionBlock>
     <small>
-      <UL unstyled={true}>
+      <UL inline={true} unstyled={true}>
         <li>Copyright &copy; 2019</li>
         <li><A>Privacy policy</A></li>
         <li><A>About us</A></li>
@@ -122,7 +173,7 @@ const Copyright = (
 );
 
 const App = props => {
-  const [ theme, setTheme ] = useState(themes.home);
+  const [ theme, setTheme ] = useState(themes.away);
   const [ showing, showModal ] = useState(false);
 
   const toggleModal = () => {
@@ -136,6 +187,7 @@ const App = props => {
         <Layout
           topContent={Nav(toggleModal)}
           asideContent={Trending}
+          Footer={CustomFooter}
           footerContent={Copyright}
           sideContent={About}
         >
@@ -143,9 +195,9 @@ const App = props => {
           <CardGrid columns={1}>
             {CHIRPS.map((item, index) => {
               return (
-                <Card>
+                <Card key={index}>
                   <MediaObject
-                    item={<Avatar src={item.avatar} alt={item.name} />}
+                    item={<Avatar src="http://placekitten.com/g/50/50" alt={item.name} />}
                     spacing="2rem"
                   >
                     <Heading as="h3" spacing={0}>{item.name}</Heading>
@@ -156,13 +208,13 @@ const App = props => {
                     <ChirpActions>
                       <small><time>{item.timestamp}</time></small>
                       <Tooltip text="Pass">
-                        <ChirpAction aria-label="Pass" onClick={toggleModal}>🏒</ChirpAction>
+                        <ChirpAction aria-label="Pass" onClick={toggleModal}><span role="img">🏒</span></ChirpAction>
                       </Tooltip>
-                      <Tooltip text="Le&nbsp;mot&nbsp;juste">
-                        <ChirpAction aria-label="Le mot juste" onClick={toggleModal}>👩‍🍳💋</ChirpAction>
+                      <Tooltip text="Celly">
+                        <ChirpAction aria-label="Le mot juste" onClick={toggleModal}><span role="img">👨‍🍳💋</span></ChirpAction>
                       </Tooltip>
                       <Tooltip text="Re-&zwj;chirp">
-                        <ChirpAction aria-label="Re-chirp" onClick={toggleModal}>🐦</ChirpAction>
+                        <ChirpAction aria-label="Re-chirp" onClick={toggleModal}><span role="img">🐦</span></ChirpAction>
                       </Tooltip>
                     </ChirpActions>
                   </MediaObject>
@@ -172,8 +224,42 @@ const App = props => {
           </CardGrid>
 
         </Layout>
-        <Modal show={showing} closeCallback={toggleModal}>
-          Ahoy there
+        <Modal
+          titleText={
+            <Heading as="h2" spacing="0">Compose chirp</Heading>
+          }
+          footerContent={
+            <Button onClick={toggleModal} use="primary">Send</Button>
+          }
+          height="400px"
+          width="300px"
+          show={showing}
+          closeCallback={toggleModal}
+        >
+          <form>
+            <LabeledControl
+              autocomplete="off"
+              id="chirp_recipient"
+              label="Chirp going out to:"
+              list="ire"
+              placeholder="@..."
+              Slot={
+                <datalist id="ire">
+                  <option value="@Dion Phaneuf" />
+                  <option value="@Sean Avery" />
+                  <option value="@Alexander Burrows" />
+                </datalist>
+              }
+            />
+            <LabeledControl
+              id="chirp_body"
+              type="textarea"
+              label="Chirp away"
+              value="I've got more ice in my drink than you've seen all game."
+            />
+            <p>
+            </p>
+          </form>
         </Modal>
       </>
     </ThemeProvider>

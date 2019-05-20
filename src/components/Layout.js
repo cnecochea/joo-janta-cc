@@ -25,7 +25,7 @@ const StyledLayout = styled.div`
       'banner   banner'
       'alert    alert'
       'nav      main '
-      'nav      aside'
+      '.      aside'
       '.        footer';
     grid-template-columns: minmax(250px, 20%) 1fr;
     grid-template-rows: auto auto 1fr auto auto;
