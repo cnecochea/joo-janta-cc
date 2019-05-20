@@ -56,14 +56,20 @@ const ChirpAction = styled.button`
   appearance: none;
   background: transparent;
   border: 0;
+  border-radius: .25rem;
   color: ${props => props.theme.fg};
   font-size: 1.5rem;
   font-weight: 900;
+
+  &:hover, &:focus {
+    background-color: ${props => props.theme.highlight};
+  }
 `;
 
 const ChirpActions = styled.div`
   color: ${props => props.theme.help};
   margin-top: 1rem;
+
 
   & * + * {
     margin-left: 1rem;
@@ -161,13 +167,13 @@ const App = props => {
                     <ChirpActions>
                       <small><time>{item.timestamp}</time></small>
                       <Tooltip text="Pass">
-                        <ChirpAction aria-label="Pass" onClick={toggleModal}>🏒</ChirpAction>
+                        <ChirpAction aria-label="Pass" onClick={toggleModal}><span role="img">🏒</span></ChirpAction>
                       </Tooltip>
-                      <Tooltip text="Le&nbsp;mot&nbsp;juste">
-                        <ChirpAction aria-label="Le mot juste" onClick={toggleModal}>👩‍🍳💋</ChirpAction>
+                      <Tooltip text="Celly">
+                        <ChirpAction aria-label="Le mot juste" onClick={toggleModal}><span role="img">👨‍🍳💋</span></ChirpAction>
                       </Tooltip>
                       <Tooltip text="Re-&zwj;chirp">
-                        <ChirpAction aria-label="Re-chirp" onClick={toggleModal}>🐦</ChirpAction>
+                        <ChirpAction aria-label="Re-chirp" onClick={toggleModal}><span role="img">🐦</span></ChirpAction>
                       </Tooltip>
                     </ChirpActions>
                   </MediaObject>
