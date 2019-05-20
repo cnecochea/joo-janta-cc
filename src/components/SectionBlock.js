@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import Heading from './Heading';
-import { P, A } from './Elements';
+import { P } from './Elements';
 import { HEADING_SIZES } from '../shared/Constants';
 
 const StyledSection = styled.section`

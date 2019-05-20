@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from './components/Button';
 import Card from './components/Card';
 import CardGrid from './components/CardGrid';
-import { A, Img, FlexWrapper, P, UL } from './components/Elements';
+import { A, Img, FlexWrapper, P, UL, Tab, Tabs } from './components/Elements';
 import Heading from './components/Heading';
 import Layout from './components/Layout';
 import MediaObject from './components/MediaObject';
@@ -110,7 +110,7 @@ const About = (
       <A href="https://www.purehockey.com/c/what-is-chirping-in-hockey" target="_blank">What is chirping? </A></Heading>
 
     <P><q>In any sport, there's an element of trash-talking designed to unnerve the
-    opponent and get him thinking about something other than the game at hand.
+    opponent and get them thinking about something other than the game at hand.
     Hockey insults are known as "chirps," and players use the best hockey chirps
     on ice rinks all across North America. Hockey chirps are common from peewee
     hockey all the way through the NHL, and the funniest chirps are told and
@@ -161,7 +161,7 @@ const Trending = (
 const Copyright = (
   <SectionBlock>
     <small>
-      <UL unstyled={true}>
+      <UL inline={true} unstyled={true}>
         <li>Copyright &copy; 2019</li>
         <li><A>Privacy policy</A></li>
         <li><A>About us</A></li>
@@ -196,7 +196,7 @@ const App = props => {
               return (
                 <Card>
                   <MediaObject
-                    item={<Avatar src={item.avatar} alt={item.name} />}
+                    item={<Avatar src="http://placekitten.com/g/50/50" alt={item.name} />}
                     spacing="2rem"
                   >
                     <Heading as="h3" spacing={0}>{item.name}</Heading>
