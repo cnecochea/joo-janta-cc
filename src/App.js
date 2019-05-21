@@ -127,7 +127,7 @@ const Trending = (
           <div>
             <Button>Sign up</Button>
           </div>
-          <small>Alredy a member? <A href="#">Login</A></small>
+          <small>Already a member? <A href="#">Login</A></small>
         </SectionBlock>
       </Card>
       <Card>
